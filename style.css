@@ -1,0 +1,16 @@
+/*
+Theme Name: Anahom
+Theme URI: https://oceanwp.org/
+Description: OceanWP WordPress theme example child theme.
+Author: Nick
+Author URI: https://oceanwp.org/
+Template: oceanwp
+Version: 1.0
+*/
+
+/* Parent stylesheet should be loaded from functions.php not using @import */
+
+body {
+    margin: 0;
+    -webkit-font-smoothing: auto;
+  }
