@@ -13,4 +13,6 @@ Version: 1.0
 body {
     margin: 0;
     -webkit-font-smoothing: auto;
+    background-color: brown;
   }
+
