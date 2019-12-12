@@ -108,30 +108,31 @@ function ocean_wp_child_by_anahom_content_width() {
 add_action( 'after_setup_theme', 'ocean_wp_child_by_anahom_content_width', 0 );
 
 /**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function ocean_wp_child_by_anahom_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'ocean_wp_child_by_anahom' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'ocean_wp_child_by_anahom' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-}
-add_action( 'widgets_init', 'ocean_wp_child_by_anahom_widgets_init' );
-
-/**
  * Enqueue scripts and styles.
  */
 function ocean_wp_child_by_anahom_scripts() {
-	wp_enqueue_style( 'ocean_wp_child_by_anahom-style', get_stylesheet_uri() );
+    wp_enqueue_style('ocean_wp_child_by_anahom-bs-css', get_template_directory_uri(). '/dist/css/bootstrap.min.css');
+    wp_enqueue_style('ocean_wp_child_by_anahom-fontawesome', get_template_directory_uri(). '/fonts/font-awesome/css/font-awesome.min.css');
+    
+    wp_enqueue_style( 'ocean_wp_child_by_anahom-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'ocean_wp_child_by_anahom-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+    wp_enqueue_style( 'popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/esm/popper.min.js', false, '', true );
+
+    wp_enqueue_script( 'popper' );
+    
+
+	//wp_enqueue_script( 'ocean_wp_child_by_anahom-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+    wp_enqueue_script( 'ocean_wp_child_by_anahom-tether', get_template_directory_uri() . '/src/js/tether.min.js', array(), '20151215', true );
+
+    wp_enqueue_script( 'ocean_wp_child_by_anahom-bootstrap', get_template_directory_uri() . '/src/js/bootstrap.min.js', array(), '20151215', true );
+
+    wp_enqueue_script( 'ocean_wp_child_by_anahom-hover', get_template_directory_uri() . 'src/js/bootstrap-hover.js', array(), '20151215', true );
+
+    wp_enqueue_script( 'ocean_wp_child_by_anahom-scroll', get_template_directory_uri() . 'src/js/nav-scroll.js', array(), '20151215', true );
+
+
+
+
 
 	wp_enqueue_script( 'ocean_wp_child_by_anahom-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
