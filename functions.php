@@ -164,6 +164,17 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
+ * widgets File.
+ */
+require get_template_directory() . '/inc/widgets.php';
+
+/**
+ * Bootstrap navwalker file.
+ */
+require get_template_directory() . '/inc/Bootstrap-wp-navwalker.php';
+
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
