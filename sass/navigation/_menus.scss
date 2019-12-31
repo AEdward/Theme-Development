@@ -9,6 +9,7 @@
 		list-style: none;
 		margin: 0;
 		padding-left: 0;
+		
 
 		ul {
 			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
@@ -27,6 +28,7 @@
 				&:hover > ul,
 				&.focus > ul {
 					left: 100%;
+					color: red;
 				}
 			}
 

@@ -25,17 +25,20 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'ocean_wp_child_by_anahom' ); ?></a>
 
 	<header id="masthead" class="site-header">
+	
 	<nav id = "menu" class = "navbar-expand-md navbar-light" role = "navigation">
+	<div class="container">
+		
 		<div class="site-branding navbar-brand">
 			<?php
 			the_custom_logo();
 			if ( is_front_page() && is_home() ) :
 				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+				<h1 class="mb-0 site-logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<?php
 			else :
 				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+				<p class="mb-0 site-logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 				<?php
 			endif;
 			$ocean_wp_child_by_anahom_description = get_bloginfo( 'description', 'display' );
@@ -45,10 +48,7 @@
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 
-	<button class ="navbar-toggle navbar-toggler-right" type = "button" data-toggle = "collapse"
-	data-target = "#bs4navbar" aria-controls = "bs4navbar" aria-expanded = "false" aria-label = "Toggle navigation">
-	<span class = "navbar-toggler-icon"></span>
-	</button>
+	
 
 <?php
 
@@ -67,7 +67,7 @@ wp_nav_menu([
 
 ]);
 ?>
-
+<hr>
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content-row">

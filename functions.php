@@ -45,6 +45,7 @@ if ( ! function_exists( 'ocean_wp_child_by_anahom_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'primary' => esc_html__( 'Primary', 'ocean_wp_child_by_anahom' ),
+			'footer' => esc_html__( 'Footer', 'ocean_wp_child_by_anahom' ), 
 		) );
 
 		/*
@@ -111,7 +112,8 @@ add_action( 'after_setup_theme', 'ocean_wp_child_by_anahom_content_width', 0 );
  * Enqueue scripts and styles.
  */
 function ocean_wp_child_by_anahom_scripts() {
-    wp_enqueue_style('ocean_wp_child_by_anahom-bs-css', get_template_directory_uri(). '/dist/css/bootstrap.min.css');
+	wp_enqueue_style('ocean_wp_child_by_anahom-bs-css', get_template_directory_uri(). '/dist/css/bootstrap.min.css');
+	wp_enqueue_style('ocean_wp_child_by_anahom-style-custom-css', get_template_directory_uri(). '/custom.css');
     wp_enqueue_style('ocean_wp_child_by_anahom-fontawesome', get_template_directory_uri(). '/fonts/font-awesome/css/font-awesome.min.css');
     
     wp_enqueue_style( 'ocean_wp_child_by_anahom-style', get_stylesheet_uri() );

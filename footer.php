@@ -13,7 +13,22 @@
 
 	</div><!-- #content -->
 
-	<footer id="colophon" class="site-footer row">
+	<footer id="colophon" class="site-footer">
+
+
+
+<?php
+
+wp_nav_menu([
+
+	
+	'theme_location' => 'footer',
+	
+	
+	]);
+?>
+
+
 		<div class="site-info col-md-12">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'ocean_wp_child_by_anahom' ) ); ?>">
 				<?php
