@@ -1,10 +1,10 @@
 <?php
 /**
- * ocean_wp_child_by_Anahom functions and definitions
+ * ocean_wp_child_by_anahom functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package ocean_wp_child_by_Anahom
+ * @package ocean_wp_child_by_anahom
  */
 
 if ( ! function_exists( 'ocean_wp_child_by_anahom_setup' ) ) :
@@ -19,7 +19,7 @@ if ( ! function_exists( 'ocean_wp_child_by_anahom_setup' ) ) :
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on ocean_wp_child_by_Anahom, use a find and replace
+		 * If you're building a theme based on ocean_wp_child_by_anahom, use a find and replace
 		 * to change 'ocean_wp_child_by_anahom' to the name of your theme in all the template files.
 		 */
 		load_theme_textdomain( 'ocean_wp_child_by_anahom', get_template_directory() . '/languages' );
@@ -108,12 +108,17 @@ function ocean_wp_child_by_anahom_content_width() {
 }
 add_action( 'after_setup_theme', 'ocean_wp_child_by_anahom_content_width', 0 );
 
+
+
+
 /**
  * Enqueue scripts and styles.
  */
 function ocean_wp_child_by_anahom_scripts() {
-	wp_enqueue_style('ocean_wp_child_by_anahom-bs-css', get_template_directory_uri(). '/dist/css/bootstrap.min.css');
-	wp_enqueue_style('ocean_wp_child_by_anahom-style-custom-css', get_template_directory_uri(). '/custom.css');
+	wp_enqueue_style('ocean_wp_child_by_anahom-bs-min-css', get_template_directory_uri(). '/dist/css/bootstrap.min.css');
+
+	#wp_enqueue_style('ocean_wp_child_by_anahom-style-bs-css', get_template_directory_uri(). '/dist/css/bootstrap.css');
+
     wp_enqueue_style('ocean_wp_child_by_anahom-fontawesome', get_template_directory_uri(). '/fonts/font-awesome/css/font-awesome.min.css');
     
     wp_enqueue_style( 'ocean_wp_child_by_anahom-style', get_stylesheet_uri() );
@@ -132,10 +137,6 @@ function ocean_wp_child_by_anahom_scripts() {
 
     wp_enqueue_script( 'ocean_wp_child_by_anahom-scroll', get_template_directory_uri() . 'src/js/nav-scroll.js', array(), '20151215', true );
 
-
-
-
-
 	wp_enqueue_script( 'ocean_wp_child_by_anahom-skip-link-focus-fix', get_template_directory_uri() . '/src/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -144,6 +145,109 @@ function ocean_wp_child_by_anahom_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'ocean_wp_child_by_anahom_scripts' );
+
+/* class */
+
+class ocean_wp_child_by_anahom_NavBar extends Walker_Nav_Menu
+{
+    public function start_lvl( &$output, $depth = 0, $args = array() ) {
+        $indent = str_repeat("\t", $depth);
+        $output .= "\n$indent<div class=\"dropdown-menu\">\n";
+    }
+
+    public function end_lvl( &$output, $depth = 0, $args = array() ) {
+        $indent = str_repeat("\t", $depth);
+        $output .= "$indent</div>\n";
+    }
+
+    public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+        $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+
+        $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+        $classes[] = 'menu-item-' . $item->ID;
+
+        $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
+
+        // New
+        $class_names .= ' nav-item';
+        
+        if (in_array('menu-item-has-children', $classes)) {
+            $class_names .= ' dropdown';
+        }
+
+        if (in_array('current-menu-item', $classes)) {
+            $class_names .= ' active';
+        }
+
+        $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+
+        $id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args, $depth );
+        $id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
+
+        // New
+        if ($depth === 0) {
+            $output .= $indent . '<li' . $id . $class_names .'>';
+        }
+
+        $atts = array();
+        $atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
+        $atts['target'] = ! empty( $item->target )     ? $item->target     : '';
+        $atts['rel']    = ! empty( $item->xfn )        ? $item->xfn        : '';
+        $atts['href']   = ! empty( $item->url )        ? $item->url        : '';
+
+        // New
+        if ($depth === 0) {
+            $atts['class'] = 'nav-link';
+        }
+
+        if ($depth === 0 && in_array('menu-item-has-children', $classes)) {
+            $atts['class']       .= ' dropdown-toggle';
+            $atts['data-toggle']  = 'dropdown';
+        }
+
+        if ($depth > 0) {
+            $manual_class = array_values($classes)[0] .' '. 'dropdown-item';
+            $atts ['class']= $manual_class;
+        }
+
+        if (in_array('current-menu-item', $item->classes)) {
+            $atts['class'] .= ' active';
+        }
+
+        $atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
+
+        $attributes = '';
+        foreach ( $atts as $attr => $value ) {
+            if ( ! empty( $value ) ) {
+                $value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
+                $attributes .= ' ' . $attr . '="' . $value . '"';
+            }
+        }
+
+        $item_output = $args->before;
+        $item_output .= '<a'. $attributes .'>';
+        $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+        $item_output .= '</a>';
+        $item_output .= $args->after;
+
+        $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+    }
+
+    public function end_el( &$output, $item, $depth = 0, $args = array() ) {
+        if ($depth === 0) {
+            $output .= "</li>\n";
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
 
 /**
  * Implement the Custom Header feature.
@@ -170,10 +274,12 @@ require get_template_directory() . '/inc/customizer.php';
  */
 require get_template_directory() . '/inc/widgets.php';
 
+
+
 /**
  * Bootstrap navwalker file.
  */
-require get_template_directory() . '/inc/Bootstrap-wp-navwalker.php';
+require get_template_directory() . '/inc/navwalker.php';
 
 
 /**

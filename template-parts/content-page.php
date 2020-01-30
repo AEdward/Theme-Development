@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package ocean_wp_child_by_Anahom
+ * @package ocean_wp_child_by_anahom
  */
 
 ?>
@@ -15,7 +15,7 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 
-	<?php ocean_wp_child_by_anahom_post_thumbnail(); ?>
+
 
 	<div class="entry-content">
 		<?php

@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package ocean_wp_child_by_Anahom
+ * @package ocean_wp_child_by_anahom
  */
 
 ?>
@@ -21,7 +21,8 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site container">
+
+<div id="page" class="site-container">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'ocean_wp_child_by_anahom' ); ?></a>
 
 	<header id="masthead" class="site-header">
@@ -48,6 +49,16 @@
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 
+
+
+		<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'ocean_wp_child_by_anahom' ); ?></a>
+	<nav id="site-navigation"  class="navbar navbar-expand-md  ">
+    <a class="navbar-brand" href="#">
+    
+    </a>
+    <button class="navbar-toggler navbar-toggler-icon navbar-toggler-right bg-light" type = "button" data-toggle="collapse" data-target="#bs4navbar" aria-controls = "bs4navbar" aria-expanded="false" aria-label="Toggle navigation"><?php esc_html_e( '', 'ocean_wp_child_by_anahom' ); ?></button>
+
+	
 	
 
 <?php
@@ -61,14 +72,14 @@ wp_nav_menu([
 'container_class' => 'collapse navbar-collapse',
 'menu_id' => 'main-menu',
 'menu_class' => 'navbar-nav ml-auto',
-'depth' => 2,
+'depth' => 4,
 'fallback_cb' => 'bs4navwalker::fallback',
-'walker' => new bs4navwalker()
+'walker' => new wp_bootstrap_navwalker()
 
 ]);
 ?>
-<hr>
 	</header><!-- #masthead -->
+
 
 	<div id="content" class="site-content-row">
 

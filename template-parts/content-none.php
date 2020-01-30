@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package ocean_wp_child_by_Anahom
+ * @package ocean_wp_child_by_anahom
  */
 
 ?>

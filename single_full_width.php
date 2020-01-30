@@ -8,7 +8,7 @@
  * 
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package ocean_wp_child_by_Anahom
+ * @package ocean_wp_child_by_anahom
  */
 
 get_header();

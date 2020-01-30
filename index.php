@@ -9,11 +9,14 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package ocean_wp_child_by_Anahom
+ * @package ocean_wp_child_by_anahom
  */
 
 get_header();
 ?>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
 
 	<div id="primary" class="content-area col-md-8">
 		<main id="main" class="site-main">
@@ -53,7 +56,10 @@ get_header();
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
+	<div class="col-sm-4">
+    <?php get_sidebar(); ?>
+    </div>
+  </div>
+</div>
 
-<div class = "col-md-4"> <?php get_sidebar(); ?> </div>
-
-<?php get_footer();?>
+<?php get_footer(); ?>
