@@ -1,5 +1,5 @@
 /*!
-Theme Name: ocean_wp_child_by_Anahom
+Theme Name: anahom
 Theme URI: http://underscores.me/
 Author: Anahom
 Author URI: https://oceanwp.org/
@@ -7,13 +7,13 @@ Description: OceanWP WordPress theme example child theme.
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
-Text Domain: ocean_wp_child_by_anahom
+Text Domain: anahom
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 
-ocean_wp_child_by_Anahom is based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc.
+anahom is based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 /*--------------------------------------------------------------
@@ -43,33 +43,47 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
+body{
+	background: #eee;
+}
 body,
 button,
 input,
 select,
 optgroup,
 textarea {
-	color: #404040;
-	font-family: sans-serif;
-	font-size: 16px;
-	font-size: 1rem;
-	line-height: 1.5;
+	font-family: lato, 'helvetica neue', helvetica, arial, verdana;
+    text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	background: #eee
 }
 
 h1, h2, h3, h4, h5, h6 {
+	font-family: lato, 'helvetica neue', helvetica, arial, verdana;
+    text-rendering: optimizeLegibility;
 	clear: both;
+    color: #212121;
+    font-weight: 900;
+    font-style: normal
 }
 
 p {
 	margin-bottom: 1.5em;
+    line-height: 1.7em;
+    font-size: 16px
 }
+a {
+    color: #607D8B;
+    text-decoration: none
+}
+
 
 dfn, cite, em, i {
 	font-style: italic;
 }
 
 blockquote {
-	margin: 0 1.5em;
+	font-size: 18px
 }
 
 address {
@@ -88,12 +102,20 @@ pre {
 	padding: 1.6em;
 }
 
+.comment-list,
+.comment-list .children,
+.widget ul {
+    list-style: none
+}
+
 code, kbd, tt, var {
 	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 	font-size: 15px;
 	font-size: 0.9375rem;
 }
-
+code {
+    color: #666
+}
 abbr, acronym {
 	border-bottom: 1px dotted #666;
 	cursor: help;
@@ -106,6 +128,11 @@ mark, ins {
 
 big {
 	font-size: 125%;
+}
+blockquote {
+    border-left: 5px solid #455A64;
+    background: rgba(0, 0, 0, .05);
+    margin-left: .5em
 }
 
 /*--------------------------------------------------------------
@@ -135,7 +162,12 @@ hr {
 }
 .site-info {
 	text-align: center;
+	margin: 0
 
+}
+.site-branding {
+    max-width: 1100px;
+    margin: auto
 }
 
 h1.site-title, p.site-title{
@@ -159,8 +191,13 @@ h1.site-title, p.site-title{
 	letter-spacing: 1px;
 }
 
+thead {
+    background-color: rgba(0, 0, 0, .15);
+    color: #212121
+}
 #masthead{
 	margin-bottom: 30px;
+	
 }
 
 
@@ -247,6 +284,8 @@ input[type="submit"] {
 	color: rgba(0, 0, 0, 0.8);
 	font-size: 12px;
 	font-size: 0.75rem;
+	font-family: inherit;
+    padding: 5px;
 	line-height: 1;
 	padding: .6em 1em .4em;
 }
@@ -265,12 +304,13 @@ input[type="reset"]:active,
 input[type="reset"]:focus,
 input[type="submit"]:active,
 input[type="submit"]:focus {
-	border-color: #aaa #bbb #bbb;
-	outline: none;
-    -webkit-box-shadow: none !important;
-	
-	-webkit-box-shadow: 0 5px 20px -7px rgba(0, 0, 0, 0.9) !important;
-    box-shadow: 0 5px 20px -7px rgba(0, 0, 0, 0.9) !important; 
+	border: 1px solid #455A64;
+    border-radius: 2px;
+    background: -moz-linear-gradient(#607d8b, #455a64);
+    background: -o-linear-gradient(#607d8b, #455a64);
+    background: -webkit-linear-gradient(#607d8b, #455a64);
+    background: linear-gradient(#607d8b, #455a64);
+    color: #fff
 }
 
 input[type="text"],
@@ -329,18 +369,20 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-	color: royalblue;
+	color: #607D8B;
 	-webkit-transition: .3s all ease;
 	-o-transition: .3s all ease;
 	transition: .3s all ease;
+	text-decoration: none;
 }
 
 a:visited {
-	color: purple;
+	color: #78909c;
+    text-decoration: none
 }
 
-a:hover, a:focus, a:active {
-	color: midnightblue;
+a:hover{
+	color: White;
 }
 
 a:focus {
@@ -352,10 +394,49 @@ a:hover, a:active {
 	text-decoration: none;
 	
 }
+
+.mb-0 a {
+	color: white;
+	font-size: 20px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	
+}
+.mb-0 a:hover {
+	font-size: 25px;
+}
 /*--------------------------------------------------------------
 ## Menus
 	
 --------------------------------------------------------------*/
+#menu{
+	background:  rgb(47, 47, 47);
+	width: 100%;
+	color: white;
+
+}
+
+.entry-header{
+	
+	text-align: center;
+
+}
+.entry-title{
+	font-size: 30px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.content-area{
+	background-color: rgb(241, 241, 241);
+	max-width: 100%;
+	height: 100%;
+	
+}
+
+.entry-content{
+
+text-align: center;
+
+}
 
 
 .site-main .comment-navigation, .site-main
@@ -391,77 +472,75 @@ a:hover, a:active {
 			opacity: 1;	
 }
 
-.dropdown-menu {
-	margin-top: 0;
-	opacity: -5;
-	-webkit-transform-origin: top;
-	transform-origin: top;
-	-webkit-animation-full-mode:forwards;
-	animation-fill-mode: forwards;
-	-webkit-transform: scale(1, 0);
-	transition: all 0.3s linear;
-}
-.dropdown-toggle::after{
-	vertical-align: .150em;
-}
-
-.top, .top:link {
-	color: #fff;
-	background-color: #333;
-	position: fixed;
-	z-index: 999;
-	bottom: 20px;
-	right: 20px;
-	width : 40px;
-	height: 40px;
-	font-size: 24px;
-	font-weight: 700;
-	line-height: 40px;
-	text-align: center;
-	text-transform: uppercase;
-	opacity: 9;
-	border: none;
-}
-
-
-.top:hover{
-	opacity: 1;
-	text-decoration: none;
+.site-logo{
+	max-width: 1100px;
+	margin: auto;
+	margin-top: 20px;
 	
+	
+	
+
 }
+
 /*site Header Menu*/
+.site-header{
+	
+	position: relative;
+    max-width: 100%;    
+    overflow: hidden;
+	background-size: cover;
+	
+ 
+}
 
 .site-header nav ul li {
 	margin-right: 5px;
 	margin-bottom: 0;
+	
 }
 .site-header nav ul li a:hover{
-	background-color: #ececec ;
+	text-decoration: underline;
 }
 .site-header nav ul li.current-menu-item a:link,
 .site-header nav ul li.current-menu-item a:visited{
-	background-color: #28a745;
-	color: white;
+	text-decoration: underline;
+	text-decoration-color: white ;
+	color: White;
 
 }
 
 
 .site-header nav ul li a:link,
 .site-header nav ul li a:visited{
-	display: block;
+	display: inline;
 	padding: 10px 18px;
-	border: 1px solid #BBB
+
 
 }
 /*footer menu*/
 
-.site-footer nav ul li {
-	text-decoration: none;
-	margin-right: 10px;
-	padding-right: 10px;
-	border-right: 1px dotted #BBB;
-}
-
+.site-footer {
+	padding: 4em;
+	margin-left: 0px;
+	background: #0d0d0d;
+	max-width: 100%;
+	
+	color: rgba(255, 255, 255, 0.5); }
+	.site-footer .footer-heading {
+	  font-size: 20px; }
+	.site-footer a {
+	  color: rgba(255, 255, 255, 0.3);
+	 
+	
+	}
+	  .site-footer a:hover {
+		color: #fff; }
+		.site-footer ul li {
+	  margin-bottom: 10px; 
+	overflow: hidden;
+	
+	}
+  
 
 /*--------------------------------------------------------------
 # Accessibility
@@ -480,7 +559,9 @@ a:hover, a:active {
 	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
 }
 
-.screen-reader-text:focus {
+.screen-reader-text:active,
+.screen-reader-text:focus,
+.screen-reader-text:hover {
 	background-color: #f1f1f1;
 	border-radius: 3px;
 	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
@@ -513,13 +594,13 @@ a:hover, a:active {
 .alignleft {
 	display: inline;
 	float: left;
-	margin-right: 1.5em;
+	margin: 5px 20px 20px 0
 }
 
 .alignright {
 	display: inline;
 	float: right;
-	margin-left: 1.5em;
+	margin: 5px 0 20px 20px
 }
 
 .aligncenter {
@@ -564,6 +645,19 @@ a:hover, a:active {
 .widget {
 	margin: 0 0 1.5em;
 	/* Make sure select elements fit in widgets. */
+}
+.widget ul {
+    padding: 0 1em
+}
+
+.widget ul ul {
+    padding: 0 0 0 1em
+}
+
+.widget td,
+.widget th {
+    padding: .2em;
+    text-align: left
 }
 
 .widget select {
@@ -621,6 +715,14 @@ a:hover, a:active {
 /*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
+
+
+.comment-content {
+    width: 100%;
+    float: left;
+	padding-left: 60px;
+	margin-bottom: .3em;
+}
 .comment-content a {
 	word-wrap: break-word;
 }
